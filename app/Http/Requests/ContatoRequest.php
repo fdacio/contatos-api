@@ -23,7 +23,7 @@ class ContatoRequest extends FormRequest
      */
     public function rules()
     {
-        $id = request()->getParams();
+        $id = request()->getParameters();
         dd($id);
         return 
         [
