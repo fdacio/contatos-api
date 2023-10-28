@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -65,7 +66,7 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
-
+/*
             if ($exception instanceof QueryException) {
                  return response()->json(
                     ["error" => "Contate o administrador", "codigo" => $exception->getCode()],
@@ -73,6 +74,15 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
+
+            if ($exception instanceof MethodNotAllowedHttpException) {
+                return response()->json(
+                   ["error" => "Contate o administrador", "codigo" => $exception->getCode()],
+                   405,
+                   ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
+               );
+           }
+*/
 
            
         }
