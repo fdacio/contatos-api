@@ -20,6 +20,7 @@ class GruposController extends Controller
 
     public function create(GrupoRequest $request)
     {
+        dd($request);
         try {
             $grupo = Grupo::create($request->all());
             return response()->json($grupo, 201);
