@@ -23,11 +23,10 @@ class ContatoRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->id);
         return 
         [
             'nome' => 'required|max:60',
-            'email' => "required|max:100|email|unique:contatos,email,{$this->id}",
+            'email' => "required|max:100|email|unique:contatos,email,id",
             'telefone' => 'required',
             'id_grupo' => 'required|numeric'
         ];
