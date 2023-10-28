@@ -25,7 +25,7 @@ class GruposController extends Controller
             $grupo = Grupo::create($request->all());
             return response()->json($grupo, 201);
         } catch (Exception $e) {
-            return response()->json($e->getMessage(), 401);
+            return response()->json(['erro' => $e->getMessage()], 401);
         }   
     }
 
