@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Grupo;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GrupoRequest;
 use Exception;
@@ -23,10 +22,9 @@ class GruposController extends Controller
         return response()->json($grupo, 201);
     }
 
-
     public function find(Grupo $grupo)
     {
-        return response()->json($grupo, 201);
+        return response()->json($grupo, 200);
     }
 
     public function update(GrupoRequest $request, Grupo $grupo)
