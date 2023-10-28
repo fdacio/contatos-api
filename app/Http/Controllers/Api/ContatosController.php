@@ -1,31 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
-use App\Grupo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GrupoRequest;
-use Exception;
 
-class GruposController extends Controller
+class ContatosController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $grupos = Grupo::orderBy('nome')->get();
-
-        return response()->json($grupos, 200);
+        //
     }
 
-    public function create(GrupoRequest $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        try {
-            $grupo = Grupo::create($request->all());
-            return response()->json($grupo, 201);
-        } catch (Exception $e) {
-            return response()->json($e, 401);
-        }   
+        //
     }
 
     /**
