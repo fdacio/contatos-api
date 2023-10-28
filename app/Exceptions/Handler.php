@@ -57,7 +57,7 @@ class Handler extends ExceptionHandler
             }
             if ($exception instanceof ModelNotFoundException) {
                 return response()->json(
-                    "Recurso {$exception->getIds()} não encontrado",
+                    "Recurso {$exception->getIds()[0]} não encontrado",
                     404
                 );
             }
