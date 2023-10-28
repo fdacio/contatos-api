@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 
@@ -54,7 +55,13 @@ class Handler extends ExceptionHandler
                     $exception->status
                 );
             }
-            dd($exception);
+            if ($exception instanceof ModelNotFoundException) {
+                return response()->json(
+                    "Recurso {$exception->getIds()} não encontrado",
+                    404
+                );
+            }
+            
         }
         
         return parent::render($request, $exception);
