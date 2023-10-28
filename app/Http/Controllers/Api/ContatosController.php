@@ -22,7 +22,7 @@ class ContatosController extends Controller
   
     public function find(Contato $contato)
     {
-        return response()->json($contato, 200);
+        return response()->json($contato->with('grupo'), 200);
     }
 
     public function update(ContatoRequest $request, Contato $contato)
