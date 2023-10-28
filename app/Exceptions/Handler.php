@@ -66,23 +66,23 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
-/*
+
             if ($exception instanceof QueryException) {
                  return response()->json(
                     ["error" => "Contate o administrador", "codigo" => $exception->getCode()],
-                    401,
+                    500,
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
 
             if ($exception instanceof MethodNotAllowedHttpException) {
                 return response()->json(
-                   ["error" => "Contate o administrador", "codigo" => $exception->getCode()],
+                   ["error" => "Método não permitido", "codigo" => $exception->getCode()],
                    405,
                    ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                );
            }
-*/
+
 
            
         }
