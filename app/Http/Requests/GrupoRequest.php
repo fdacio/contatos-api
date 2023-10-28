@@ -14,11 +14,9 @@ class GrupoRequest extends FormRequest
 
     public function rules()
     {
-        $id = request()->get('id');
-
         return
             [
-                'nome' => "required|max:100|unique:grupos,nome,{$id}",
+                'nome' => "required|max:100|unique:grupos,nome,{$this->id}",
             ];
     }
 
