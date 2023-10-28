@@ -76,7 +76,7 @@ class Handler extends ExceptionHandler
 
            if ($exception instanceof Exception) {
             return response()->json(
-               ["error" => "Contate o administrador", "codigo" => $exception->getCode()],
+               ["error" => "Contate o administrador", "message" => $exception->getMessage()],
                500,
                ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
            );
