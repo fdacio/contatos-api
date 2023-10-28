@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class GrupoRequest extends FormRequest
 {
@@ -30,8 +31,4 @@ class GrupoRequest extends FormRequest
         ];
     }
 
-    public function response(array $errors)
-    {
-        return response()->json($errors, 422);
-    }
 }
