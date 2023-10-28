@@ -23,6 +23,7 @@ class ContatoRequest extends FormRequest
      */
     public function rules()
     {
+        dd($this);
         return 
         [
             'nome' => 'required|max:60',
