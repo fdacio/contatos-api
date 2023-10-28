@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
                 return response()->json(
                     "Recurso {$id} não encontrado",
                     404,
-                    ['encoding' => 'UTF8']
+                    ['Content-type' => 'text/json; charset=utf-8']
                 );
             }
             
