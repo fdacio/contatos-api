@@ -2,84 +2,39 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
+use App\Contato;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContatoRequest;
 
 class ContatosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $contatos = Contato::orderBy('nome')->get();
+        return response()->json($contatos, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(ContatoRequest $request)
     {
-        //
+        $contato = Contato::create($request->all());
+        return response()->json($contato, 201);
+    }
+  
+    public function find(Contato $contato)
+    {
+        return response()->json($contato, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(ContatoRequest $request, Contato $contato)
     {
-        //
+        $contato->update($request->all());
+        return response()->json($contato, 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function destroy(Contato $contato)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Contato::destroy($contato->id);
+        return response()->json($contato, 204);
     }
 }
