@@ -54,6 +54,7 @@ class Handler extends ExceptionHandler
                     $exception->status
                 );
             }
+            dd($exception);
         }
         
         return parent::render($request, $exception);
