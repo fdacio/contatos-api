@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Api')->group(function () {
 
     Route::get('/grupos', 'GruposController@index');
-    Route::get('/grupos/{id}', 'GruposController@find');
+    Route::get('/grupos/{grupo}', 'GruposController@find');
     Route::post('/grupos', 'GruposController@create');
     Route::put('/grupos', 'GruposController@update');
     Route::delete('/grupos/{id}', 'GruposController@destroy');
