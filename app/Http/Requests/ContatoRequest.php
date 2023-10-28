@@ -23,8 +23,8 @@ class ContatoRequest extends FormRequest
      */
     public function rules()
     {
-        $id = request()->route('contato');
-
+        $id = request()->route();
+        dd($id);
         return 
         [
             'nome' => 'required|max:60',
