@@ -25,11 +25,10 @@ class GrupoRequest extends FormRequest
     {
         $id = request()->get('id');
 
-        return 
-        [
-            'nome' => "required|max:100|unique:grupos,nome,{$id}",
-        ];
-
+        return
+            [
+                'nome' => "required|max:100|unique:grupos,nome,{$id}",
+            ];
     }
     /**
      * Get the validation messages that apply to the request.
@@ -38,9 +37,15 @@ class GrupoRequest extends FormRequest
      */
     public function messages()
     {
-        return [            
+        return [
             'nome.required' => 'Informe o nome',
             'nome.unique' => 'Grupo já cadastrado'
         ];
+    }
+
+    public function response(array $errors)
+    {
+        // Always return JSON.
+        return response()->json($errors, 422);
     }
 }
