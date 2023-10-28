@@ -10,7 +10,7 @@ class ContatosController extends Controller
 {
     public function index()
     {
-        $contatos = Contato::with('grupo')->orderBy('nome')->get();
+        $contatos = Contato::orderBy('nome')->get();
         return response()->json($contatos, 200);
     }
 
