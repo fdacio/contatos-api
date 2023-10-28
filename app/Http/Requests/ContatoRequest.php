@@ -30,7 +30,7 @@ class ContatoRequest extends FormRequest
             'nome' => 'required|max:60',
             'email' => "required|max:100|email|unique:contatos,email,{$id}",
             'telefone' => 'required',
-            'grupo' => 'required|numeric'
+            'grupo' => 'required'
         ];
     }
 
@@ -48,7 +48,6 @@ class ContatoRequest extends FormRequest
             'email.unique' => 'Email já cadastrado',
             'telefone.required' => 'Informe o Telefone',
             'grupo.required' => 'Informe o Grupo',
-            'grupo.numeric' => 'Grupo inválido'
         ];
     }
 }
