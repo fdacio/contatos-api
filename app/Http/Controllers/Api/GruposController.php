@@ -45,7 +45,7 @@ class GruposController extends Controller
     {
         try {
             Grupo::destroy($grupo);
-            return response()->json($grupo, 201);
+            return response()->json($grupo, 204);
         } catch (Exception $e) {
             return response()->json(['erro' => 'Contate o Administrador', 'codigo' => $e->getCode()], 401);
         }  
