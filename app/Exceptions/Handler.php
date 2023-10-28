@@ -60,7 +60,8 @@ class Handler extends ExceptionHandler
                 $id = $ids[0];
                 return response()->json(
                     "Recurso {$id} não encontrado",
-                    404
+                    404,
+                    ['encoding' => 'UTF8']
                 );
             }
             
