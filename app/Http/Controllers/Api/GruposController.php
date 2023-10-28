@@ -14,23 +14,17 @@ class GruposController extends Controller
     public function index()
     {
         $grupos = Grupo::orderBy('nome')->get();
-
         return response()->json($grupos, 200);
     }
 
     public function create(GrupoRequest $request)
     {
-        
-        try {
-            $grupo = Grupo::create($request->all());
-            return response()->json($grupo, 201);
-        } catch (Exception $e) {
-            return response()->json(['erro' => 'Contate o Administrador', 'codigo' => $e->getCode()], 401);
-        }   
+        $grupo = Grupo::create($request->all());
+        return response()->json($grupo, 201);
     }
 
 
-    public function find(Grupo $grupo) 
+    public function find(Grupo $grupo)
     {
         return response()->json($grupo, 201);
     }
@@ -40,14 +34,10 @@ class GruposController extends Controller
         //
     }
 
- 
+
     public function destroy(Grupo $grupo)
     {
-        try {
-            Grupo::destroy($grupo);
-            return response()->json($grupo, 204);
-        } catch (Exception $e) {
-            return response()->json(['erro' => 'Contate o Administrador', 'codigo' => $e->getCode()], 401);
-        }  
+        Grupo::destroy($grupo);
+        return response()->json($grupo, 204);
     }
 }

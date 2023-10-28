@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 
@@ -64,8 +65,16 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
-            dd($exception);
-            
+
+            if ($exception instanceof QueryException) {
+                 return response()->json(
+                    ["error" => "Contate o administrador", "codigo" => $exception->getCode()],
+                    401,
+                    ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
+                );
+            }
+
+           
         }
         
         return parent::render($request, $exception);
