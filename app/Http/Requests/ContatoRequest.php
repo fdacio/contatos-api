@@ -25,7 +25,7 @@ class ContatoRequest extends FormRequest
     {
         $contato = request()->route('contato');
         $id = !empty($contato) ? $contato->id : '';
-        dd($contato, $id);
+
         return 
         [
             'nome' => 'required|max:60',

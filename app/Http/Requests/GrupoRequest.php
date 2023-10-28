@@ -14,9 +14,12 @@ class GrupoRequest extends FormRequest
 
     public function rules()
     {
+        $grupo = request()->route('grupo');
+        $id = !empty($grupo) ? $grupo->id : '';
+
         return
             [
-                'nome' => "required|max:100|unique:grupos,nome,{$this->id}",
+                'nome' => "required|max:100|unique:grupos,nome,{$id}",
             ];
     }
 
