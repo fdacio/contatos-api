@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
         if ($request->is('api/*')) {
             if ($exception instanceof ValidationException) {
                 return response()->json(
-                    $exception->errors(), 
+                    $exception->errors(),
                     $exception->status
                 );
             }
@@ -68,23 +68,21 @@ class Handler extends ExceptionHandler
 
             if ($exception instanceof MethodNotAllowedHttpException) {
                 return response()->json(
-                   ["error" => "Método não permitido"],
-                   405,
-                   ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
-               );
-           }
+                    ["error" => "Método não permitido"],
+                    405,
+                    ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
+                );
+            }
 
-           if ($exception instanceof Exception) {
-            return response()->json(
-               ["error" => "Contate o administrador", "message" => $exception->getMessage()],
-               500,
-               ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
-           );
-       }
-
-           
+            if ($exception instanceof Exception) {
+                return response()->json(
+                    ["error" => "Contate o administrador", "message" => $exception->getMessage()],
+                    500,
+                    ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
+                );
+            }
         }
-        
+
         return parent::render($request, $exception);
     }
 }
