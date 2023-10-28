@@ -29,9 +29,10 @@ class GruposController extends Controller
         return response()->json($grupo, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(GrupoRequest $request, $grupo)
     {
-        //
+        $grupo->update($request->all());
+        return response()->json($grupo, 200);
     }
 
 

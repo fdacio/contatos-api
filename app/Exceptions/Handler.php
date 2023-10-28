@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
 
             if ($exception instanceof MethodNotAllowedHttpException) {
                 return response()->json(
-                   ["error" => "Método não permitido", "codigo" => $exception->getCode()],
+                   ["error" => "Método não permitido"],
                    405,
                    ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                );
