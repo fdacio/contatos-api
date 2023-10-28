@@ -13,7 +13,7 @@ class Contato extends Model
 
     public function grupo()
     {
-        $this->hasOne('App\Grupo');
+        $this->hasOne('App\Grupo', 'id', 'id_grupo');
     }
 }
 
