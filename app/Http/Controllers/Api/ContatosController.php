@@ -32,7 +32,6 @@ class ContatosController extends Controller
         return response()->json($contato, 200);
     }
 
-
     public function destroy(Contato $contato)
     {
         Contato::destroy($contato->id);
