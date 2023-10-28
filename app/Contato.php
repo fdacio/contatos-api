@@ -8,7 +8,7 @@ class Contato extends Model
 {
     protected $table = 'contatos';
 
-    protected $fillable = ['nome', 'email', 'telefone', 'id_grupo'];
+    protected $fillable = ['nome', 'email', 'telefone', 'grupo'];
 
 
     public function grupo()
