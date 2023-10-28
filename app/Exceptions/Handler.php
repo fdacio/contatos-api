@@ -64,6 +64,7 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
+            dd($exception);
             
         }
         
