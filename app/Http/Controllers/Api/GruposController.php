@@ -37,7 +37,7 @@ class GruposController extends Controller
 
     public function destroy(Grupo $grupo)
     {
-        Grupo::destroy($grupo);
+        Grupo::destroy($grupo->id);
         return response()->json($grupo, 204);
     }
 }
