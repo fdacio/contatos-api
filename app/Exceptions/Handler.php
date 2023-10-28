@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
                 $ids = $exception->getIds();
                 $id = $ids[0];
                 return response()->json(
-                    "Recurso {$id} não encontrado",
+                    ["error" => "Recurso {$id} não encontrado"],
                     404,
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
