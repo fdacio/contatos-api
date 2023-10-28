@@ -18,7 +18,7 @@ class GruposController extends Controller
         return response()->json($grupos, 200);
     }
 
-    public function create(GrupoRequest $request)
+    public function create(Request $request)
     {
         dd($request);
         try {
