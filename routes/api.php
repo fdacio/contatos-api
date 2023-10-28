@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Api')->group(function () {
+
+    Route::get('/grupos', 'GruposController@index');
+    Route::get('/grupos/{id}', 'GruposController@find');
+    Route::post('/grupos', 'GruposController@create');
+    Route::put('/grupos', 'GruposController@update');
+    Route::delete('/grupos/{id}', 'GruposController@destroy');
+
+    Route::get('/contatos', 'ContatosController@index');
+    Route::get('/contatos/{id}', 'ContatosController@find');
+    Route::post('/contatos', 'ContatosController@create');
+    Route::put('/contatos', 'ContatosController@update');
+    Route::delete('/contatos/{id}', 'ContatosController@destroy');
+
 });
