@@ -25,30 +25,14 @@ class GruposController extends Controller
             $grupo = Grupo::create($request->all());
             return response()->json($grupo, 201);
         } catch (Exception $e) {
-            return response()->json(['erro' => $e->getMessage()], 401);
+            return response()->json(['erro' => 'Contate o Administrador'], 401);
         }   
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function find(Grupo $grupo)
     {
-        //
+        return response()->json($grupo, 201);
     }
 
     /**
