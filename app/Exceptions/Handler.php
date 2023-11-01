@@ -74,6 +74,7 @@ class Handler extends ExceptionHandler
                 );
             }
 
+            /*
             if ($exception instanceof Exception) {
                 return response()->json(
                     ["error" => "Contate o administrador", "message" => $exception->getMessage()],
@@ -81,6 +82,7 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
+            */
         }
 
         return parent::render($request, $exception);
