@@ -76,17 +76,18 @@ class Handler extends ExceptionHandler
             }
 
             if ($exception instanceof QueryException) {
-                dd($exception->getMessage());
+                if (str_contains($exception->getMessage(), 'Integrity constraint violation')) {
+                    $message = "Erro de violação de integridade";
+                } else {
+                    $message = $exception->getMessage();
+                }
                 return response()->json(
-                    ["error" => ""],
+                    ["error" => $message],
                     400,
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
 
-            
-
-            /*
             if ($exception instanceof Exception) {
                 return response()->json(
                     ["error" => "Contate o administrador", "message" => $exception->getMessage()],
@@ -94,7 +95,7 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
-            */
+
         }
 
         return parent::render($request, $exception);
