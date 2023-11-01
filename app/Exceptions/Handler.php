@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
@@ -73,6 +74,17 @@ class Handler extends ExceptionHandler
                     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
                 );
             }
+
+            if ($exception instanceof QueryException) {
+                dd($exception);
+                return response()->json(
+                    ["error" => ""],
+                    400,
+                    ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']
+                );
+            }
+
+            
 
             /*
             if ($exception instanceof Exception) {
