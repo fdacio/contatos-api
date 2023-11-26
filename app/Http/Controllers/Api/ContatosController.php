@@ -18,7 +18,6 @@ class ContatosController extends Controller
         $contatos = Contato::with('grupo')->orderBy('nome');
         if (!empty($nome)) {
             $contatos = $contatos->where('nome', 'like', "%$nome%");
-            dd($nome, $grupo);
         }
         if (!empty($grupo)) {
             $contatos = $contatos->where('id_grupo', '=', $grupo);
