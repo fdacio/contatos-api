@@ -13,7 +13,7 @@ class ContatosController extends Controller
     {
         $nome = request()->get('nome');
         $grupo = request()->get('grupo');
-                
+
         $contatos = Contato::with('grupo')->orderBy('nome');
 
         if (!empty($nome)) {
@@ -22,6 +22,8 @@ class ContatosController extends Controller
         if (!empty($grupo)) {
             $contatos = $contatos->where('id_grupo', '=', $grupo);
         }
+
+        $contatos = $contatos->get();
 
         return response()->json($contatos, 200);
     }
