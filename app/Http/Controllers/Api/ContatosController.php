@@ -13,7 +13,6 @@ class ContatosController extends Controller
     {
         $nome = $request->get('nome');
         $grupo = $request->get('grupo');
-        dd($nome, $grupo);
         $contatos = Contato::with('grupo')->orderBy('nome');
         if (!empty($nome)) {
             $contatos = $contatos->where('nome', 'like', "%$nome%");
@@ -24,11 +23,6 @@ class ContatosController extends Controller
 
         $contatos = Contato::with('grupo')->orderBy('nome')->get();
         return response()->json($contatos, 200);
-    }
-
-    public function search(Request $request)
-    {
-        return $this->index($request);
     }
 
     public function create(ContatoRequest $request)
