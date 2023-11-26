@@ -27,5 +27,6 @@ Route::namespace('Api')->group(function () {
     Route::post('/contatos', 'ContatosController@create');
     Route::put('/contatos/{contato}', 'ContatosController@update');
     Route::delete('/contatos/{contato}', 'ContatosController@destroy');
+    Route::post('/contatos/search', 'ContatosController@search');
 
 });
