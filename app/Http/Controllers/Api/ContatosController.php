@@ -9,13 +9,7 @@ use Illuminate\Http\Request;
 
 class ContatosController extends Controller
 {
-    public function index()
-    {
-        $contatos = Contato::with('grupo')->orderBy('nome')->get();
-        return response()->json($contatos, 200);
-    }
-
-    public function search(Request $request)
+    public function index(Request $request = null)
     {
         $nome = $request->get('nome');
         $grupo = $request->get('grupo');
@@ -26,8 +20,14 @@ class ContatosController extends Controller
         if (!empty($grupo)) {
             $contatos = $contatos->where('id_grupo', '=', $grupo);
         }
-        $contatos = $contatos->get();
+
+        $contatos = Contato::with('grupo')->orderBy('nome')->get();
         return response()->json($contatos, 200);
+    }
+
+    public function search(Request $request)
+    {
+        return $this->index($request);
     }
 
     public function create(ContatoRequest $request)
