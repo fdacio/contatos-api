@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class ContatosController extends Controller
 {
-    public function index(Request $request = null)
+    public function index()
     {
-        $nome = $request->get('nome');
-        $grupo = $request->get('grupo');
+        $nome = request()->get('nome');
+        $grupo = request()->get('grupo');
         $contatos = Contato::with('grupo')->orderBy('nome');
         if (!empty($nome)) {
             $contatos = $contatos->where('nome', 'like', "%$nome%");
