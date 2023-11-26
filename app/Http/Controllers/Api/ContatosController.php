@@ -24,7 +24,7 @@ class ContatosController extends Controller
             $contatos = $contatos->where('nome', 'like', "%$nome%");
         }
         if (!empty($grupo)) {
-            $contatos = $contatos->where('grupo_id', '=', $grupo);
+            $contatos = $contatos->where('id_grupo', '=', $grupo);
         }
         $contatos = $contatos->get();
         return response()->json($contatos, 200);
