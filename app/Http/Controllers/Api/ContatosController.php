@@ -23,7 +23,7 @@ class ContatosController extends Controller
             $contatos = $contatos->where('id_grupo', '=', $grupo);
         }
 
-        $contatos = $contatos->get();
+        $contatos = $contatos->paginate(200);
 
         return response()->json($contatos, 200);
     }
