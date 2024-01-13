@@ -11,7 +11,7 @@ $factory->define(Contato::class, function (Faker $faker) {
     return [
         'nome' => $faker->name(),
         'email' => $faker->email(),
-        'telefone' => $faker->phone(),
+        'telefone' => $faker->numerify('(##)# ####-####'),
         'id_grupo' => $grupos->random()
     ];
 });
