@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Contato;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContatoRequest;
-use Illuminate\Http\Request;
+
 
 class ContatosController extends Controller
 {
-    public function index()
+    private function index()
     {
         $nome = request()->get('nome');
         $grupo = request()->get('grupo');
@@ -23,8 +23,19 @@ class ContatosController extends Controller
             $contatos = $contatos->where('id_grupo', '=', $grupo);
         }
 
-        $contatos = $contatos->paginate(200);
+        return $contatos;
 
+    }
+
+    public function all() 
+    {
+        $contatos =  $this->index()->get();
+        return response()->json($contatos, 200);
+    } 
+
+    public function pageable() 
+    {
+        $contatos =  $this->index()->paginate(200);
         return response()->json($contatos, 200);
     }
 

@@ -22,7 +22,8 @@ Route::namespace('Api')->group(function () {
     Route::put('/grupos/{grupo}', 'GruposController@update');
     Route::delete('/grupos/{grupo}', 'GruposController@destroy');
 
-    Route::get('/contatos', 'ContatosController@index');
+    Route::get('/contatos', 'ContatosController@all');
+    Route::get('/contatos/pageable', 'ContatosController@pageable');
     Route::get('/contatos/{contato}', 'ContatosController@find');
     Route::post('/contatos', 'ContatosController@create');
     Route::put('/contatos/{contato}', 'ContatosController@update');
