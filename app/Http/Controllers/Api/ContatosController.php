@@ -36,7 +36,7 @@ class ContatosController extends Controller
     public function pageable(Request $request) 
     {
         $size = (request()->get('size') != '') ? request()->get('size') : 200;
-        $contatos =  $this->index($request)->paginate($size);
+        $contatos =  $this->index($request)->paginate()->setSize($size);
         return response()->json($contatos, 200);
     }
 
